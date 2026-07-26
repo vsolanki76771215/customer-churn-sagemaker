@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+conda-env/
+
+# Credentials and private configuration
+.env
+.env.*
+*.pem
+*.key
+credentials
+.aws/
+
+# Temporary system files
+lost+found/
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
