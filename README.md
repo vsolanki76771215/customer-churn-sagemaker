@@ -192,7 +192,6 @@ These artifacts provide both technical and business-facing evidence of model per
 customer-churn-sagemaker/
 ├── .gitignore
 ├── README.md
-├── requirements.txt
 ├── data/
 │   └── storedata_total.csv
 ├── docs/
@@ -200,7 +199,6 @@ customer-churn-sagemaker/
 │   ├── 01_churn_exploration.ipynb
 │   ├── 02_create_pipeline.ipynb
 │   ├── 03_generate_reports.ipynb
-│   └── model.tar.gz
 ├── reports/
 │   ├── confusion-matrix.png
 │   ├── evaluation.json
@@ -214,8 +212,6 @@ customer-churn-sagemaker/
     └── preprocess.py
 ```
 
-The local working directory may also contain `.ipynb_checkpoints/` folders and Python `__pycache__/` files. These are automatically generated development artifacts and should normally be excluded from Git by `.gitignore`.
-
 ## File and folder reference
 
 ### Root files
@@ -224,14 +220,12 @@ The local working directory may also contain `.ipynb_checkpoints/` folders and P
 |---|---|
 | `.gitignore` | Prevents notebook checkpoints, Python caches, virtual environments, credentials, logs, and temporary files from being committed. |
 | `README.md` | Project overview, implementation guide, results, and repository documentation. |
-| `requirements.txt` | Python package dependencies required by the notebooks and local scripts. |
 
 ### Data
 
 | Path | Description |
 |---|---|
 | `data/storedata_total.csv` | Source customer dataset used for exploration, preprocessing, training, and evaluation. |
-| `data/.ipynb_checkpoints/` | Automatically generated Jupyter checkpoint directory; it is not a source-data component. |
 
 ### Notebooks
 
@@ -240,8 +234,6 @@ The local working directory may also contain `.ipynb_checkpoints/` folders and P
 | `notebooks/01_churn_exploration.ipynb` | Performs data exploration, experimental model development, SageMaker training, hyperparameter tuning, and tuning-result review. |
 | `notebooks/02_create_pipeline.ipynb` | Defines and runs the end-to-end SageMaker Pipeline, including preprocessing, tuning, evaluation, AUC validation, and conditional model registration. |
 | `notebooks/03_generate_reports.ipynb` | Generates the final evaluation tables, plots, explainability output, and pipeline reports. |
-| `notebooks/model.tar.gz` | Local copy of an XGBoost model artifact produced by SageMaker and used for evaluation or report generation. |
-| `notebooks/.ipynb_checkpoints/` | Jupyter autosave checkpoints; not part of the intended project source. |
 
 ### Source code
 
@@ -249,8 +241,6 @@ The local working directory may also contain `.ipynb_checkpoints/` folders and P
 |---|---|
 | `src/preprocess.py` | Standalone SageMaker Processing script that reads the raw data, transforms it, splits it, and saves training, validation, and test outputs. |
 | `src/evaluate.py` | Standalone evaluation script that loads the selected model, generates test predictions, calculates metrics, and saves evaluation output. |
-| `src/__pycache__/preprocess.cpython-312.pyc` | Python 3.12 bytecode generated automatically after importing or executing `preprocess.py`; it is not editable source code. |
-| `src/.ipynb_checkpoints/` | Jupyter-generated checkpoints for files edited through JupyterLab. |
 
 ### Reports
 
@@ -263,14 +253,6 @@ The local working directory may also contain `.ipynb_checkpoints/` folders and P
 | `reports/shap-summary.png` | Summarizes how features influence model predictions using SHAP values. |
 | `reports/tuning-results.csv` | Tabular comparison of SageMaker hyperparameter-tuning trials and their objective values. |
 | `reports/pipeline-graph.png` | Visual representation of the SageMaker Pipeline and its step dependencies. |
-
-### Other directories
-
-| Path | Description |
-|---|---|
-| `docs/` | Reserved for supporting project documentation. Git does not retain an empty directory unless it contains a placeholder file such as `.gitkeep`. |
-| `.git/` | Local Git metadata and commit history. It is managed by Git and is never uploaded as a normal repository folder. |
-| `.ipynb_checkpoints/` | Root-level Jupyter autosave data; normally ignored. |
 
 ## Prerequisites
 
